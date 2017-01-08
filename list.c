@@ -1,5 +1,5 @@
 //
-// Created by zjy on 2017/1/8.
+// Created by jolyzhou on 2017/1/8.
 //
 #include <stdlib.h>
 #include <string.h>
