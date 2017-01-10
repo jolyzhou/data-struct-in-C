@@ -7,24 +7,24 @@
 #include "list.h"
 
 /* list_init */
-void list_init(List *list, void (*destory)(void *data))
+void list_init(List *list, void (*destroy)(void *data))
 {
     //init the list
     list->size = 0;
-    list->destory = destory;
+    list->destroy = destroy;
     list->head = NULL;
     list->tail = NULL;
     return;
 }
 
-/* list_destory */
-void list_destory(List *list)
+/* list_destroy */
+void list_destroy(List *list)
 {
     void *data;
     //remove each element
     while (list_size(list) > 0) {
-        if (list_rem_next(list, NULL, (void **)&data) == 0 && list->destory != NULL) {
-            list->destory(data);
+        if (list_rem_next(list, NULL, (void **)&data) == 0 && list->destroy != NULL) {
+            list->destroy(data);
         }
     }
     memset(list, 0, sizeof(List));

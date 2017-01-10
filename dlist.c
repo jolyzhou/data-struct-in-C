@@ -7,21 +7,21 @@
 
 #include "dlist.h"
 
-void dlist_init(DList *list, void (*destory)(void *data))
+void dlist_init(DList *list, void (*destroy)(void *data))
 {
     list->size = 0;
-    list->destory = destory;
+    list->destroy = destroy;
     list->head = NULL;
     list->tail = NULL;
     return;
 }
 
-void dlist_destory(DList *list)
+void dlist_destroy(DList *list)
 {
     void *data;
     while (dlist_size(list) > 0) {
-        if (dlist_remove(list, dlist_tail(list), (void **)&data) == 0 && list->destory != NULL) {
-            list->destory(data);
+        if (dlist_remove(list, dlist_tail(list), (void **)&data) == 0 && list->destroy != NULL) {
+            list->destroy(data);
         }
     }
     memset(list, 0, sizeof(DList));

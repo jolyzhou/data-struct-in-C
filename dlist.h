@@ -18,14 +18,14 @@ typedef struct DList_
 {
     int size;
     int (*match)(const void *key1, const void *key2);
-    void (*destory)(void *data);
+    void (*destroy)(void *data);
     DListElmt *head;
     DListElmt *tail;
 } DList;
 
 // public interface
-void dlist_init(DList *list, void (*destory)(void *data));
-void dlist_destory(DList *list);
+void dlist_init(DList *list, void (*destroy)(void *data));
+void dlist_destroy(DList *list);
 int dlist_ins_next(DList *list, DListElmt *element, const void *data);
 int dlist_ins_prev(DList *list, DListElmt *element, const void *data);
 int dlist_remove(DList *list, DListElmt *element, void **data);

@@ -7,21 +7,21 @@
 
 #include "clist.h"
 
-void clist_init(CList *list, void (*destory)(void *data))
+void clist_init(CList *list, void (*destroy)(void *data))
 {
     list->size = 0;
-    list->destory = destory;
+    list->destroy = destroy;
     list->head = NULL;
 
     return;
 }
 
-void clist_destory(CList *list)
+void clist_destroy(CList *list)
 {
     void *data;
     while (clist_size(list) > 0) {
-        if (clist_rem_next(list, list->head, (void **)&data) == 0 && list->destory != NULL) {
-            list->destory(data);
+        if (clist_rem_next(list, list->head, (void **)&data) == 0 && list->destroy != NULL) {
+            list->destroy(data);
         }
     }
     memset(list, 0, sizeof(CList));

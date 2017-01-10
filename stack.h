@@ -12,7 +12,7 @@ typedef List Stack;
 
 // public interface
 #define stack_init list_init
-#define stack_destory list_destory
+#define stack_destroy list_destroy
 #define stack_peek(stack) ((stack)->head == NULL ? NULL : (stack)->head->data)
 #define stack_size list_size
 
