@@ -14,6 +14,6 @@ typedef struct Directory_
 } Directory;
 
 // public interface
-int directory(const char *path, Directory **dir);
+int dirls(const char *path, Directory **dir);
 
 #endif //DATA_STRUCT_TEST_SORT_DIRLS_H
