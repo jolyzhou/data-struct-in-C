@@ -140,6 +140,28 @@ static int merge(void *data, int esize, int i, int j, int k,
             mpos++;
         }
     }
+//    ======second loop for merge array======
+//    while (ipos <= j && jpos <= k) {
+//        if (compare(&a[ipos*esize], &a[jpos*esize]) < 0) {
+//            memcpy(&m[mpos*esize], &a[ipos*esize], esize);
+//            ipos++;
+//            mpos++;
+//        } else {
+//            memcpy(&m[mpos*esize], &a[jpos*esize], esize);
+//            jpos++;
+//            mpos++;
+//        }
+//    }
+//    while (ipos <= j) {
+//        memcpy(&m[mpos*esize], &a[ipos*esize], esize);
+//        ipos++;
+//        mpos++;
+//    }
+//    while (jpos <= k) {
+//        memcpy(&m[mpos*esize], &a[jpos*esize], esize);
+//        jpos++;
+//        mpos++;
+//    }
     memcpy(&a[i*esize], m, esize*((k-i)+1));
     free(m);
     return 0;
