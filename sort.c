@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "sort.h"
+
 
 // ---------------INSERT SORT start-----------------
 // insert sort
