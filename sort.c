@@ -208,9 +208,62 @@ int ctsort(int *data, int size, int k)
         temp[count[data[j]] - 1] = data[j];
         count[data[j]]--;
     }
-    memcpy(data, temp, size* sizeof(int));
+    memcpy(data, temp, size * sizeof(int));
     free(count);
     free(temp);
     return 0;
 }
 // ---------------COUNT SORT end-----------------
+
+
+// ---------------RADIX SORT start-----------------
+#define BASE 10
+// get element max bit
+static int max_bit(int *data, int size)
+{
+    int max_data = data[0];
+    int d = 1, p = 10;
+    for (int i = 1; i < size; i++) {
+        if (max_data < data[i])
+            max_data = data[i];
+    }
+    while (max_data >= p) {
+        max_data /= 10;
+        d++;
+    }
+    return d;
+}
+// radix sort
+int rxsort(int *data, int size)
+{
+    int d = max_bit(data, size);
+    int *counts, *temp;
+    int i, j, k;
+    int radix = 1;
+    if ((counts = (int *)malloc(k* sizeof(int))) == NULL)
+        return -1;
+    if ((temp = (int *)malloc(size* sizeof(int))) == NULL)
+        return -1;
+    // sort from the least significant position to the most significant
+    for (i = 1; i <= d; i++) {
+        for (j = 0; j < BASE; j++)
+            counts[j] = 0;
+        for (j = 0; j < size; j++) {
+            k = (int)(data[j] / radix) % BASE;
+            counts[k]++;
+        }
+        for (j = 1; j < BASE; j++)
+            counts[j] = counts[j] + counts[j - 1];
+        for (j = size - 1; j >= 0; j--) {
+            k = (int)(data[j] / radix) % BASE;
+            temp[counts[k] - 1] = data[j];
+            counts[k]--;
+        }
+        radix *= BASE;
+    }
+    memcpy(data, temp, size * sizeof(int));
+    free(counts);
+    free(temp);
+    return 0;
+}
+// ---------------RADIX SORT end-----------------

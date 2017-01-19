@@ -17,4 +17,6 @@ int mgsort(void *data,
            int (*compare)(const void *key1, const void *key2));
 // count sort
 int ctsort(int *data, int size, int k);
+// radix sort
+int rxsort(int *data, int size, int p, int k);
 #endif //DATA_STRUCT_SORT_H
