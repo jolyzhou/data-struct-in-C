@@ -188,3 +188,29 @@ int mgsort(void *data, int size, int esize, int i, int k,
     return 0;
 }
 // ---------------MERGE SORT end-----------------
+
+// ---------------COUNT SORT start-----------------
+int ctsort(int *data, int size, int k)
+{
+    int *count, *temp;
+    int i, j;
+    if ((count = (int *)malloc(k * sizeof(int))) == NULL)
+        return -1;
+    if ((temp = (int *)malloc(k * sizeof(int))) == NULL)
+        return -1;
+    for (i = 0; i < k; i++)
+        count[i] = 0;
+    for (j = 0; j < size; j++)
+        count[data[j]]++;
+    for (i = 1; i < k; i++)
+        count[i] = count[i] + count[i-1];
+    for (j = size - 1; j >= 0; j--) {
+        temp[count[data[j]] - 1] = data[j];
+        count[data[j]]--;
+    }
+    memcpy(data, temp, size* sizeof(int));
+    free(count);
+    free(temp);
+    return 0;
+}
+// ---------------COUNT SORT end-----------------

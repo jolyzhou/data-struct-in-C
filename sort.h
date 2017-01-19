@@ -15,4 +15,6 @@ int qksort(void *data,
 int mgsort(void *data,
            int size, int esize, int i, int k,
            int (*compare)(const void *key1, const void *key2));
+// count sort
+int ctsort(int *data, int size, int k);
 #endif //DATA_STRUCT_SORT_H
