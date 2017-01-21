@@ -293,3 +293,27 @@ int bisearch(void *sorted,
     }
     return -1;
 }
+
+// example for bisearch ===> word spell search
+#define SPELL_SIZE 31
+
+// compare string
+static int compare_str(const void *str1, const void *str2)
+{
+    int retval;
+    if ((retval = strcmp((const char *)str1, (const char *)str2)) > 0) {
+        return 1;
+    } else if (retval < 0)
+        return -1;
+    else
+        return 0;
+}
+
+// spell
+int spell(char (*dictionary)[SPELL_SIZE], int size, const char *word)
+{
+    if (bisearch(dictionary, word, size, SPELL_SIZE, compare_str) >= 0)
+        return 1;
+    else
+        return 0;
+}
